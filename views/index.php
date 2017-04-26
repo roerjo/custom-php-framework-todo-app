@@ -1,107 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
     <meta charset="UTF-8">
 
     <title>Task Manager</title>
 
+    <link rel="stylesheet" href="../public/css/main.css">
+
     <style>
         
         th, td {
-            min-width: 100px;
-            text-align: center;
+            
         }
 
     </style>
 
 </head>
+
 <body>
 
-    <h2>Add New Task</h2>
+    <div class="container">
 
-    <form action="/new" method="POST">
+        <section id="addTask">
+
+            <h2>Add New Task</h2>
+
+            <div class="row">
+
+                <form action="/new" method="POST">
+                    
+                    <input type="text" name="title" placeholder="Title"/>
+                    
+                    <input type="text" name="description" placeholder="Description"/>
+
+                    <button type="submit" id="enter">Add Task</button>
+
+                </form>
+
+            </div>
+
+        </section>
         
-        <input type="text" name="title" placeholder="Title"/>
+
+        <section id="tasks">
         
-        <input type="text" name="description" placeholder="Description"/>
+            <h2>Tasks</h2>
 
-        <button type="submit">Add Task</button>
+            <div class="row">
 
-    </form>
+                <table>
+                    
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Description</th>
+                            <th>Date Entered</th>
+                            <th>Completed</th>
+                            <th>Date Completed</th>
+                            <th></td>
+                        </tr>
+                    </thead>
 
-    <h2>Tasks</h2>
-    
-    <table>
-        
-        <thead>
+                    <tbody>
 
-            <tr>
-                <th>Task</th>
-                <th>Description</th>
-                <th>Date Entered</th>
-                <th>Completed</th>
-                <th>Date Completed</th>
-                <th></td>
-                <th></td>
-            <tr>
+                        <?php foreach ($tasks as $task) : ?>
 
-        </thead>
+                        <tr>    
 
-        <tbody>
+                            <td><?= $task->title; ?></td>
+                        
+                            <td><?= $task->description; ?></td>
 
-            <?php foreach ($tasks as $task) : ?>
+                            <td><?= $task->dateEntered; ?></td>
 
-            <tr>    
+                            <td>
+                        
+                                <?php if ($task->completed) : ?>
 
-                <td><?= $task->title; ?></td>
-            
-                <td><?= $task->description; ?></td>
+                                    Done
 
-                <td><?= $task->dateEntered; ?></td>
+                                <?php else : ?>
 
-                <td>
-            
-                    <?php if ($task->completed) : ?>
+                                    Not Completed
 
-                        Done
+                                <?php endif; ?>
+                            
+                            </td>
 
-                    <?php else : ?>
+                            <td><?= $task->dateCompleted; ?></td>
 
-                        Not Completed
+                            <td>
+                                <form action="/complete/<?= $task->id; ?>" method="POST">
 
-                    <?php endif; ?>
-                
-                </td>
+                                    <button id="success">Complete</button>
 
-                <td><?= $task->dateCompleted; ?></td>
+                                </form>
 
-                <td>
-                    <form action="/complete/<?= $task->id; ?>" method="POST">
+                                <form action="/delete/<?= $task->id; ?>" method="POST">
 
-                        <button>Complete</button>
+                                    <button id="delete">Delete</button>
 
-                    </form>
+                                </form> 
 
-                </td>
+                            </td>
+                        
+                        </tr>
 
-                <td>
+                        <?php endforeach; ?>
 
-                    <form action="/delete/<?= $task->id; ?>" method="POST">
+                    </tbody>
 
-                        <button>Delete</button>
+                </table>
 
-                    </form>                    
+            </div>
 
-                </td>
-            
-            </tr>
+        </section>
 
-            <?php endforeach; ?>
-
-        </tbody>
-
-    </table>
+    </div>
 
 </body>
 </html>

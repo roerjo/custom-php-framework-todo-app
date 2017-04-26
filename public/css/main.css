@@ -1,0 +1,85 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+h2 {
+	text-align: center;
+}
+
+button {
+	border: none;
+	padding: 6px 12px;
+	color: #fff;
+	font-weight: 600;
+	border-radius: 4px;
+}
+
+.container {
+	width: 980px;
+	margin: auto;
+}
+
+.row {
+	display: flex;
+	justify-content: center;
+}
+
+
+/*--------- Add Section ---------*/ 
+
+
+#addTask {
+	background-color: #42f4f1;
+	margin: 15px 0;
+	padding: 15px 0;
+}
+
+#addTask input {
+	display: block;
+	border: none;
+	height: 30px;
+	width: 250px;
+	margin: 10px 0;
+}
+
+
+/*--------- Task Section ---------*/ 
+
+
+#tasks {
+	background-color: #41d0f4;
+	margin: 15px 0;
+	padding: 15px 0;
+}
+
+th {
+	font-size: 1.2em;
+}
+
+th, td {
+	min-width: 100px;
+    text-align: center;
+	padding: 10px 5px;
+}
+
+td form {
+	display: inline-block;
+}
+
+
+/*--------- Buttons ---------*/ 
+
+
+#enter {
+	background-color: #f4a041;
+}
+
+#delete {
+	background-color: #bc2020;
+}
+
+#success {
+	background-color: #0ba03d;
+}
+
