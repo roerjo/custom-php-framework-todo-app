@@ -7,7 +7,3 @@ Router::load('routes.php')->direct(
     Request::method(),
     Request::identifier()
 );
-
-
-
-
