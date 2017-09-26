@@ -26,7 +26,7 @@ class TaskController
         $task = [
             'title' => $title,
             'description' => $description,
-            'completed' => false,
+            'completed' => (int) false,
             'dateEntered' => $date
         ];
 
@@ -59,7 +59,7 @@ class TaskController
         $date = date($dateFormat);
         
         $task = [
-            'dateCompleted' => $date
+            'dateCompleted' => $date,
         ];
 
         $query->update('tasks', $task, $id);
