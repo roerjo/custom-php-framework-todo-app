@@ -7,15 +7,7 @@
 
     <title>Task Manager</title>
 
-    <link rel="stylesheet" href="../public/css/main.css">
-
-    <style>
-        
-        th, td {
-            
-        }
-
-    </style>
+    <link rel="stylesheet" href="css/main.css">
 
 </head>
 
@@ -30,9 +22,9 @@
             <div class="row">
 
                 <form action="/new" method="POST">
-                    
+
                     <input type="text" name="title" placeholder="Title"/>
-                    
+
                     <input type="text" name="description" placeholder="Description"/>
 
                     <button type="submit" id="enter">Add Task</button>
@@ -42,16 +34,16 @@
             </div>
 
         </section>
-        
+
 
         <section id="tasks">
-        
+
             <h2>Tasks</h2>
 
             <div class="row">
 
                 <table>
-                    
+
                     <thead>
                         <tr>
                             <th>Task</th>
@@ -67,16 +59,16 @@
 
                         <?php foreach ($tasks as $task) : ?>
 
-                        <tr>    
+                        <tr>
 
                             <td><?= $task->title; ?></td>
-                        
+
                             <td><?= $task->description; ?></td>
 
                             <td><?= $task->dateEntered; ?></td>
 
                             <td>
-                        
+
                                 <?php if ($task->completed) : ?>
 
                                     Done
@@ -86,7 +78,7 @@
                                     Not Completed
 
                                 <?php endif; ?>
-                            
+
                             </td>
 
                             <td><?= $task->dateCompleted; ?></td>
@@ -102,10 +94,10 @@
 
                                     <button id="delete">Delete</button>
 
-                                </form> 
+                                </form>
 
                             </td>
-                        
+
                         </tr>
 
                         <?php endforeach; ?>
