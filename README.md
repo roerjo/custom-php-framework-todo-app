@@ -5,7 +5,9 @@ This is a custom PHP MVC framework I'm working on. CRUD functions are currently 
 A .env file will need to be created with the following attributes:
 
 DATABASE
+
 DATABASE_USER
+
 DATABASE_PASSWD
 
 ![Alt text](/screenshots/todoMain.png)
