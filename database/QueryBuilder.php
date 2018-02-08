@@ -29,9 +29,9 @@ class QueryBuilder
      *
      * @param string $table
      *
-     * @return object
+     * @return array
      */
-    public function all(string $table)
+    public function all(string $table): array
     {
         try {
             $statement = $this->pdo->prepare("SELECT * FROM {$table}");

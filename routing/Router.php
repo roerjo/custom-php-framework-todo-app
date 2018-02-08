@@ -21,9 +21,9 @@ class Router
      *
      * @param string $file
      *
-     * @return object
+     * @return Router
      */
-    public static function load(string $file)
+    public static function load(string $file): Router
     {
         $router = new static;
 

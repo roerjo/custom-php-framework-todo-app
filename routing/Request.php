@@ -11,7 +11,7 @@ class Request
      *
      * return string
      */
-    public static function uri()
+    public static function uri(): string
     {
         // remove leading and trailing slashes from the URI
         $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
@@ -33,7 +33,7 @@ class Request
      *
      * return string
      */
-    public static function method()
+    public static function method(): string
     {
         return $_SERVER['REQUEST_METHOD'];
     }
@@ -44,7 +44,7 @@ class Request
      *
      * return string
      */
-    public static function identifier()
+    public static function identifier(): string
     {
         return basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
     }
