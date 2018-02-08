@@ -2,16 +2,36 @@
 
 require 'Connection.php';
 
+/**
+ * Class: QueryBuilder
+ *
+ */
 class QueryBuilder
 {
+    /**
+     * Holds the PDO instance
+     *
+     * @var PDO
+     */
     private $pdo;
 
+    /**
+     * __construct
+     *
+     */
     public function __construct()
     {
         $this->pdo = Connection::make();
     }
 
-    public function all($table)
+    /**
+     * Return all rows from the passed table
+     *
+     * @param string $table
+     *
+     * @return object
+     */
+    public function all(string $table)
     {
         try {
             $statement = $this->pdo->prepare("SELECT * FROM {$table}");
@@ -24,7 +44,13 @@ class QueryBuilder
         }
     }
 
-    public function insert($table, $values)
+    /**
+     * Insert a new row with the passed values into the passed table
+     *
+     * @param string $table
+     * @param array $values
+     */
+    public function insert(string $table, array $values)
     {
         $sql = sprintf(
             "INSERT INTO %s (%s) VALUES(%s)",
@@ -42,7 +68,13 @@ class QueryBuilder
         }
     }
 
-    public function delete($table, $id)
+    /**
+     * Delete the row with the passed id in the passed table
+     *
+     * @param string $table
+     * @param int $id
+     */
+    public function delete(string $table, int $id)
     {
         try {
             $statement = $this->pdo->prepare(
@@ -55,7 +87,15 @@ class QueryBuilder
         }
     }
 
-    public function update($table, $values, $id)
+    /**
+     * Update the row with that holds the passed id with the passed
+     * values in the passed table
+     *
+     * @param string $table
+     * @param array $values
+     * @param int $id
+     */
+    public function update(string $table, array $values, int $id)
     {
         try {
             $sql = sprintf(

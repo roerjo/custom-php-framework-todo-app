@@ -1,21 +1,45 @@
 <?php
 
+/**
+ * Class: TaskController
+ *
+ */
 class TaskController
 {
+    /**
+     * Holds the QueryBuilder instance
+     *
+     * @var mixed
+     */
+    private $query;
+
+    /**
+     * __construct
+     *
+     */
+    public function __construct()
+    {
+        $this->query = new QueryBuilder;
+    }
+
+    /**
+     * Retrieve all tasks
+     *
+     */
     public function index()
     {
-        $query = new QueryBuilder;
-
-        $tasks = $query->all('tasks');
+        $tasks = $this->query->all('tasks');
 
         require '../views/index.php';
     }
 
 
+    /**
+     * Add a new task
+     *
+     */
     public function add()
     {
-        $dateFormat = 'Y-m-d';
-        $date = date($dateFormat);
         $title = $_REQUEST['title'];
         $description = $_REQUEST['description'];
 
@@ -23,38 +47,38 @@ class TaskController
             'title' => $title,
             'description' => $description,
             'completed' => (int) false,
-            'dateEntered' => $date
+            'dateEntered' => date('Y-m-d'),
         ];
 
-        $query = new QueryBuilder;
-
-        $query->insert('tasks', $task);
+        $this->query->insert('tasks', $task);
 
         header('Location: /');
     }
 
-    public function delete($id)
+    /**
+     * Remove a task
+     *
+     * @param int $id
+     */
+    public function delete(int $id)
     {
-        $query = new QueryBuilder;
-
-        $query->delete('tasks', $id);
+        $this->query->delete('tasks', $id);
 
         header('Location: /');
     }
 
-    public function update($id)
+    /**
+     * Update a task
+     *
+     * @param int $id
+     */
+    public function update(int $id)
     {
-        $query = new QueryBuilder;
-
-        $dateFormat = 'Y-m-d';
-
-        $date = date($dateFormat);
-
         $task = [
-            'dateCompleted' => $date,
+            'dateCompleted' => date('Y-m-d'),
         ];
 
-        $query->update('tasks', $task, $id);
+        $this->query->update('tasks', $task, $id);
 
         header('Location: /');
     }

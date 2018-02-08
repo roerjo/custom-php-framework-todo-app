@@ -1,7 +1,16 @@
 <?php
 
+/**
+ * Class: Connection
+ *
+ */
 class Connection
 {
+    /**
+     * Creates a new PDO connection
+     *
+     * @return PDO
+     */
     public static function make()
     {
         return new PDO(
