@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Routing;
+
 /**
  * Class: Request
  *

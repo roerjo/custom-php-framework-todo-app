@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Database\QueryBuilder;
+
 /**
  * Class: TaskController
  *
@@ -30,7 +34,7 @@ class TaskController
     {
         $tasks = $this->query->all('tasks');
 
-        require '../views/index.php';
+        require '../app/views/index.php';
     }
 
 

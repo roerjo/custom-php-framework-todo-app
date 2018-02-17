@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Routing;
+
 /**
  * Class: Router
  *
@@ -71,7 +73,8 @@ class Router
             // parse the controller@method
             $action = explode('@', $this->routes[$requestType][$uri]);
 
-            $controller = new $action[0];
+            $controller = 'App\\Controllers\\' . $action[0];
+            $controller = new $controller;
 
             $method = $action[1];
 

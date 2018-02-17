@@ -1,6 +1,8 @@
 <?php
 
-require 'Connection.php';
+namespace App\Database;
+
+use PDO;
 
 /**
  * Class: QueryBuilder

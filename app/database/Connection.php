@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Database;
+
+use PDO;
+
 /**
  * Class: Connection
  *

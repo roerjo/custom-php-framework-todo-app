@@ -3,7 +3,11 @@ declare(strict_types=1);
 
 require '../vendor/autoload.php';
 
-(new Dotenv\Dotenv('../'))->load();
+use Dotenv\Dotenv;
+use App\Routing\Router;
+use App\Routing\Request;
+
+(new Dotenv('../'))->load();
 
 if ($_ENV['APP_DEBUG'] === 'false') {
     ini_set('display_errors', 'off');
