@@ -62,8 +62,6 @@ class Router
      * @param string $uri
      * @param string $requestType
      * @param string $id
-     *
-     * return mixed
      */
     public function direct(string $uri, string $requestType, string $id='')
     {
@@ -77,12 +75,14 @@ class Router
 
             $method = $action[1];
 
-            // return the result of the controller's method
-            return $controller->$method($id);
+            if (method_exists($controller, $method)) {
+                $controller->$method($id);
+            } else {
+                throw new Exception("Routing error");
+            }
+        } else {
+            throw new Exception("Not found");
         }
-
-        // ghetto error handling
-        echo "No such controller or method.";
     }
 }
 
