@@ -6,7 +6,7 @@ ini_set('display_errors', 'on');
 
 require '../vendor/autoload.php';
 
-require '../bootstrap.php';
+(new Dotenv\Dotenv('../'))->load();
 
 Router::load('routes.php')->direct(
     Request::uri(),
