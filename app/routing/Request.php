@@ -9,31 +9,31 @@ namespace App\Routing;
 class Request
 {
     /**
-     * Extracts the URI from the URL
+     * Extracts the path from the URL
      *
-     * return string
+     * @return string
      */
-    public static function uri(): string
+    public static function path(): string
     {
         // remove leading and trailing slashes from the URI
-        $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+        $path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
-        // break the URI into an array
-        $idTest = explode('/', $uri);
+        // break the path into an array
+        $idTest = explode('/', $path);
 
-        // check if the last part of the URI is a resource id
+        // check if the last part of the path is a resource id
         if (is_numeric($idTest[count($idTest) - 1])) {
-            // set the URI equal to everthing before the resource id
-            $uri = strstr($uri, '/', true);
+            // set the path equal to everthing before the resource id
+            $path = strstr($path, '/', true);
         }
 
-        return $uri;
+        return $path;
     }
 
     /**
-     * Retrieves the Http method
+     * Retrieves the HTTP method
      *
-     * return string
+     * @return string
      */
     public static function method(): string
     {
@@ -44,11 +44,10 @@ class Request
      * Retrieves the last portion of the URI, which should be the
      * resource id.
      *
-     * return string
+     * @return string
      */
     public static function identifier(): string
     {
         return basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
     }
 }
-

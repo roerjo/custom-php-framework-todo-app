@@ -48,10 +48,10 @@ class TaskController
         $description = $_REQUEST['description'];
 
         $task = [
-            'title' => $title,
-            'description' => $description,
-            'completed' => (int) false,
-            'dateEntered' => date('Y-m-d'),
+            'title'         => $title,
+            'description'   => $description,
+            'completed'     => (int) false,
+            'dateEntered'   => date('Y-m-d'),
         ];
 
         $this->query->insert('tasks', $task);
@@ -87,4 +87,3 @@ class TaskController
         header('Location: /');
     }
 }
-

@@ -34,7 +34,6 @@ class Router
         return $router;
     }
 
-
     /**
      * Load GET routes and controllers into the routes array
      *
@@ -45,7 +44,6 @@ class Router
     {
         $this->routes['GET'][$uri] = $controller;
     }
-
 
     /**
      * Load POST routes and controllers into the routes array
@@ -88,4 +86,3 @@ class Router
         }
     }
 }
-
