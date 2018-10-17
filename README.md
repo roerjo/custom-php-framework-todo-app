@@ -4,11 +4,11 @@ This is a custom PHP MVC framework I'm working on. CRUD functions are currently 
 
 A .env file will need to be created with the following attributes:
 
-DATABASE
-
-DATABASE_USER
-
-DATABASE_PASSWD
+- APP_DEBUG // boolean
+- BASE_URI  // used to setup the client in the tests (I use localhost:8000)
+- DATABASE  // database to be used
+- DATABASE_USER // authorized db user
+- DATABASE_PASSWORD // db user passowrd
 
 Within your database run the following SQL script:
 
@@ -27,5 +27,9 @@ AUTO_INCREMENT = 6
 DEFAULT CHARACTER SET = utf8
 COLLATE = utf8_unicode_ci
 ```
+
+Locally, I run `php -S localhost:8000` in the public directory. Be sure to
+match your local server with the BASE_URI you have set if you want tests
+to pass.
 
 ![Alt text](/screenshots/todoMain.png)

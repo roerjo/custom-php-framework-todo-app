@@ -1,42 +1,23 @@
 <?php
 
+use Dotenv\Dotenv;
 use GuzzleHttp\Client;
 use App\Database\Connection;
 use PHPUnit\Framework\TestCase;
-use PHPUnit\DbUnit\TestCaseTrait;
 
 class TaskControllerTest extends TestCase
 {
-    use TestCaseTrait;
-
-    private static $pdo = null;
-    private $conn = null;
     protected $client;
     protected static $id;
-
-    final public function getConnection()
-    {
-        if ($this->conn === null) {
-            if (self::$pdo === null) {
-                self::$pdo = Connection::make();
-            }
-            $this->conn = $this->createDefaultDBConnection(self::$pdo, 'todo');
-        }
-
-        return $this->conn;
-    }
-
-    public function getDataset()
-    {
-        return $this->createArrayDataSet([]);
-    }
 
     public function setUp()
     {
         parent::setUp();
 
+        (new Dotenv('.'))->load();
+
         $this->client = new Client([
-            'base_uri' => 'http://todo.localhost',
+            'base_uri' => $_ENV['BASE_URI'],
         ]);
     }
 
@@ -64,7 +45,8 @@ class TaskControllerTest extends TestCase
         //die(var_dump($response->getBody()->getContents()));
         $this->assertEquals(200, $response->getStatusCode());
 
-        $statement = self::$pdo->prepare("
+        $pdo = Connection::make();
+        $statement = $pdo->prepare("
                 SELECT id FROM tasks WHERE title = 'I don\'t wanna'
         ");
 
