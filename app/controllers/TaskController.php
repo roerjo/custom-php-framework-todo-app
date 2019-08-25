@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Database\QueryBuilder;
+use App\Models\Task;
 
 /**
  * Class: TaskController
@@ -11,28 +11,12 @@ use App\Database\QueryBuilder;
 class TaskController
 {
     /**
-     * Holds the QueryBuilder instance
-     *
-     * @var mixed
-     */
-    private $query;
-
-    /**
-     * __construct
-     *
-     */
-    public function __construct()
-    {
-        $this->query = new QueryBuilder;
-    }
-
-    /**
      * Retrieve all tasks
      *
      */
     public function index()
     {
-        $tasks = $this->query->all('tasks');
+        $tasks = (new Task)->all();
 
         require '../app/views/index.php';
     }
@@ -51,10 +35,9 @@ class TaskController
             'title'         => $title,
             'description'   => $description,
             'completed'     => (int) false,
-            'dateEntered'   => date('Y-m-d'),
         ];
 
-        $this->query->insert('tasks', $task);
+        (new Task)->create($task);
 
         header('Location: /');
     }
@@ -66,7 +49,7 @@ class TaskController
      */
     public function delete(int $id)
     {
-        $this->query->delete('tasks', $id);
+        (new Task)->destroy($id);
 
         header('Location: /');
     }
@@ -79,10 +62,10 @@ class TaskController
     public function update(int $id)
     {
         $task = [
-            'dateCompleted' => date('Y-m-d'),
+            'completed_at' => date('Y-m-d H:i:s'),
         ];
 
-        $this->query->update('tasks', $task, $id);
+        (new Task)->update($task, $id);
 
         header('Location: /');
     }

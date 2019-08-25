@@ -65,7 +65,7 @@
 
                             <td><?= $task->description; ?></td>
 
-                            <td><?= $task->dateEntered; ?></td>
+                            <td><?= $task->created_at; ?></td>
 
                             <td>
 
@@ -81,7 +81,7 @@
 
                             </td>
 
-                            <td><?= $task->dateCompleted; ?></td>
+                            <td><?= $task->completed_at; ?></td>
 
                             <td>
                                 <form action="/complete/<?= $task->id; ?>" method="POST">

@@ -110,8 +110,8 @@ class QueryBuilder
             $statement = $this->pdo->prepare($sql);
 
             $statement->bindParam(
-                ':dateCompleted',
-                $values['dateCompleted'],
+                ':completed_at',
+                $values['completed_at'],
                 PDO::PARAM_STR
             );
 
