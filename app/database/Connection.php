@@ -17,8 +17,17 @@ class Connection
      */
     public static function make(): PDO
     {
+        switch ($_ENV['DATABASE_DRIVER']) {
+            case 'mysql':
+                $dsn = 'mysql:host='.$_ENV['DATABASE_HOST'].';dbname='.$_ENV['DATABASE'];
+                break;
+            case 'sqlite':
+                $dsn = 'sqlite:'.$_ENV['DATABASE_DATABASE'];
+                break;
+        }
+
         return new PDO(
-            'mysql:host=127.0.0.1;dbname=' . $_ENV['DATABASE'],
+            $dsn,
             $_ENV['DATABASE_USER'],
             $_ENV['DATABASE_PASSWORD'],
             [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
