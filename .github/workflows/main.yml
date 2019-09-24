@@ -13,6 +13,8 @@ jobs:
       run: composer install -q --no-ansi --no-scripts --no-suggest --no-progress --prefer-dist
     - name: Install SQLite
       run: sudo apt-get install -y sqlite3
+    - name: Setup Environment
+      run: php -r "copy('.env.ci', '.env');"
     - name: Setup Database
       run: echo .read migrations/sqlite/create_tasks_table_20190924072400.sql | sqlite3
     - name: Run tests
