@@ -19,7 +19,7 @@ class Connection
     {
         switch ($_ENV['DATABASE_DRIVER']) {
             case 'mysql':
-                $dsn = 'mysql:host='.$_ENV['DATABASE_HOST'].';dbname='.$_ENV['DATABASE'];
+                $dsn = 'mysql:host='.$_ENV['DATABASE_HOST'].';dbname='.$_ENV['DATABASE_DATABASE'];
                 break;
             case 'sqlite':
                 $dsn = 'sqlite:'.$_ENV['DATABASE_DATABASE'];

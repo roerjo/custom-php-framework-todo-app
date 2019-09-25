@@ -26,6 +26,18 @@ class QueryBuilder
         $this->pdo = Connection::make();
     }
 
+    public function migrate()
+    {
+        $create_tasks_table = file_get_contents(__DIR__.'/../../migrations/create_tasks_table_20190924072400.sql');
+
+        try {
+            $statement = $this->pdo->prepare($create_tasks_table);
+            $statement->execute();
+        } catch (Exception $e) {
+            die(var_dump($e->getMessage()));
+        }
+    }
+
     /**
      * Return all rows from the passed table
      *

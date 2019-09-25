@@ -2,6 +2,7 @@
 
 use Dotenv\Dotenv;
 use GuzzleHttp\Client;
+use App\Database\QueryBuilder;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Process\Process;
 
@@ -17,15 +18,20 @@ class TaskControllerTest extends TestCase
         self::$process->start();
         usleep(100000); //wait for server to get going
 
+        copy('.env', '.env.temp');
+        copy('.env.ci', '.env');
+
         (new Dotenv('.', '.env.ci'))->load();
 
-        $create_tables = new Process('echo .read migrations/sqlite/create_tasks_table_20190924072400.sql | sqlite3');
-        $create_tables->start();
+        (new QueryBuilder)->migrate();
     }
 
     public static function tearDownAfterClass()
     {
         self::$process->stop();
+
+        copy('.env', '.env.ci');
+        copy('.env.temp', '.env');
     }
 
     public function setUp()

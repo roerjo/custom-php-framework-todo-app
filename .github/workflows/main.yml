@@ -15,6 +15,11 @@ jobs:
       run: sudo apt-get install -y sqlite3
     - name: Setup Environment
       run: php -r "copy('.env.ci', '.env');"
+    - uses: mirromutth/mysql-action@v1.1
+      with:
+        mysql version: '5.7'
+        mysql database: 'todos'
+        mysql root password: rootpassword
     - name: Run tests
       run: vendor/bin/phpunit tests --bootstrap=vendor/autoload.php
     - name: Upload Server Report
