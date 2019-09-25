@@ -18,7 +18,7 @@ class TaskControllerTest extends TestCase
 
         $this->client = new Client([
             'base_uri' => $_ENV['BASE_URI'],
-            'http_errors' => false,
+            //'http_errors' => false,
         ]);
     }
 
