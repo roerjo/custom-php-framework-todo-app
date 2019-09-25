@@ -28,8 +28,8 @@ class Connection
 
         return new PDO(
             $dsn,
-            $_ENV['DATABASE_USER'],
-            $_ENV['DATABASE_PASSWORD'],
+            $_ENV['DATABASE_USER'] ?? null,
+            $_ENV['DATABASE_PASSWORD'] ?? null,
             [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
         );
     }

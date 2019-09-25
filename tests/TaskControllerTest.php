@@ -14,25 +14,25 @@ class TaskControllerTest extends TestCase
     {
         parent::setUp();
 
-        (new Dotenv('.'))->load();
+        (new Dotenv('.', '.env.ci'))->load();
 
         $this->client = new Client([
             'base_uri' => $_ENV['BASE_URI'],
+            'http_errors' => false,
         ]);
     }
 
     public function testItRetrievesFromIndex()
     {
-        $response = $this->client->request('GET', '/');
+        $response = $this->client->get('/');
 
-        //die(var_dump($response->getBody()->getContents()));
         $this->assertEquals(200, $response->getStatusCode());
     }
 
     public function testItCreatesTask()
     {
         $task = [
-            'title'         => 'I don\'t wanna',
+            'title'         => 'I dont wanna',
             'description'   => 'Tough task description',
         ];
 
@@ -47,7 +47,7 @@ class TaskControllerTest extends TestCase
 
         $pdo = Connection::make();
         $statement = $pdo->prepare("
-                SELECT id FROM tasks WHERE title = 'I don\'t wanna'
+                SELECT id FROM tasks WHERE title = 'I dont wanna'
         ");
 
         $statement->execute();

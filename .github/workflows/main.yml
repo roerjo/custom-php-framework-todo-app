@@ -17,5 +17,7 @@ jobs:
       run: php -r "copy('.env.ci', '.env');"
     - name: Setup Database
       run: echo .read migrations/sqlite/create_tasks_table_20190924072400.sql | sqlite3
+    - name: Run PHP In Background
+      run: nohup php -S localhost:8080 -t foo/ bar.php > phpd.log 2>&1 &
     - name: Run tests
       run: vendor/bin/phpunit tests
