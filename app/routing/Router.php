@@ -27,6 +27,7 @@ class Router
      */
     public static function load(string $file): Router
     {
+        dd($file);
         $router = new static;
 
         require $file;
