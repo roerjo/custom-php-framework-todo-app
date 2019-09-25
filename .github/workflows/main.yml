@@ -19,3 +19,8 @@ jobs:
       run: echo .read migrations/sqlite/create_tasks_table_20190924072400.sql | sqlite3
     - name: Run tests
       run: vendor/bin/phpunit tests --bootstrap=vendor/autoload.php
+    - name: Upload Server Report
+      uses: actions/upload-artifact@v1
+      with:
+        name: server-report
+        path: phpd.log

@@ -3,14 +3,14 @@
 declare(strict_types=1);
 
 // pluging the autoloader
-require '../vendor/autoload.php';
+require __DIR__.'/../vendor/autoload.php';
 
 use Dotenv\Dotenv;
 use App\Routing\Router;
 use App\Routing\Request;
 
 // retrieve user specified environment variables
-(new Dotenv('../'))->load();
+(new Dotenv(__DIR__.'/../'))->load();
 
 // should be turned off for a production environment
 if ($_ENV['APP_DEBUG'] === 'false') {

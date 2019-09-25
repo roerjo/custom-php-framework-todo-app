@@ -14,7 +14,7 @@ class TaskControllerTest extends TestCase
 
     public static function setUpBeforeClass()
     {
-        self::$process = new Process("php -S localhost:8080 -t . public/index.php");
+        self::$process = new Process("nohup php -S localhost:8080 -t public public/index.php > phpd.log 2>&1 &");
         self::$process->start();
         usleep(100000); //wait for server to get going
     }

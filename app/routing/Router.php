@@ -77,7 +77,7 @@ class Router
             $method = $action[1];
 
             if (method_exists($controller, $method)) {
-                $controller->$method($id);
+                $controller->$method((int) $id);
             } else {
                 throw new Exception("Routing error");
             }

@@ -18,7 +18,7 @@ class TaskController
     {
         $tasks = (new Task)->all();
 
-        require '../app/views/index.php';
+        require __DIR__.'/../views/index.php';
     }
 
 
