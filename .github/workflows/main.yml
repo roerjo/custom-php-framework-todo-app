@@ -20,6 +20,6 @@ jobs:
     - name: Run PHP Server In Background
       run: nohup php -S localhost:8080 -t public > phpd.log 2>&1 &
     - name: Run tests
-      run: vendor/bin/phpunit tests
-    - name: Dump Log
-      run: cat phpd.log
+      run: |
+        vendor/bin/phpunit tests
+        cat phpd.log
