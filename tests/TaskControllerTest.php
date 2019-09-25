@@ -2,14 +2,13 @@
 
 use Dotenv\Dotenv;
 use GuzzleHttp\Client;
-use App\Database\Connection;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Process\Process;
 
 class TaskControllerTest extends TestCase
 {
     protected $client;
-    protected static $id;
+    protected static $id = 1;
     private static $process;
 
     public static function setUpBeforeClass()
@@ -17,6 +16,8 @@ class TaskControllerTest extends TestCase
         self::$process = new Process("nohup php -S localhost:8080 -t public public/index.php > phpd.log 2>&1 &");
         self::$process->start();
         usleep(100000); //wait for server to get going
+
+        (new Dotenv('.', '.env.ci'))->load();
     }
 
     public static function tearDownAfterClass()
@@ -27,8 +28,6 @@ class TaskControllerTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-
-        (new Dotenv('.', '.env.ci'))->load();
 
         $this->client = new Client([
             'base_uri' => $_ENV['BASE_URI'],
@@ -58,16 +57,6 @@ class TaskControllerTest extends TestCase
 
         //die(var_dump($response->getBody()->getContents()));
         //$this->assertEquals(200, $response->getStatusCode());
-
-        $pdo = Connection::make();
-        $statement = $pdo->prepare("
-                SELECT id FROM tasks WHERE title = 'I dont wanna'
-        ");
-
-        $statement->execute();
-
-        $results = $statement->fetchAll(PDO::FETCH_CLASS);
-        self::$id = array_pop($results)->id;
     }
 
     public function testItCompletesTask()
