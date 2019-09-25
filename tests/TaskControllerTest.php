@@ -4,11 +4,25 @@ use Dotenv\Dotenv;
 use GuzzleHttp\Client;
 use App\Database\Connection;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Process\Process;
 
 class TaskControllerTest extends TestCase
 {
     protected $client;
     protected static $id;
+    private static $process;
+
+    public static function setUpBeforeClass()
+    {
+        self::$process = new Process("php -S localhost:8080 -t .");
+        self::$process->start();
+        usleep(100000); //wait for server to get going
+    }
+
+    public static function tearDownAfterClass()
+    {
+        self::$process->stop();
+    }
 
     public function setUp()
     {

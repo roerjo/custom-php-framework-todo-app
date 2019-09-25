@@ -26,3 +26,57 @@ Stack trace:
 #1 /home/eric/code/php/custom-php-framework-todo-app/public/index.php(24): App\Routing\Router->direct('delete', 'POST', 'delete')
 #2 {main}
   thrown in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php on line 50
+[Wed Sep 25 09:59:30 2019] ::1:40746 [200]: /
+[Wed Sep 25 09:59:30 2019] ::1:40750 [302]: /new
+[Wed Sep 25 09:59:30 2019] ::1:40754 [200]: /
+[Wed Sep 25 09:59:30 2019] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Controllers\TaskController::update() must be of the type integer, string given, called in /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php on line 80 and defined in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php:62
+Stack trace:
+#0 /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php(80): App\Controllers\TaskController->update('complete')
+#1 /home/eric/code/php/custom-php-framework-todo-app/public/index.php(24): App\Routing\Router->direct('complete', 'POST', 'complete')
+#2 {main}
+  thrown in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php on line 62
+[Wed Sep 25 09:59:30 2019] ::1:40758 [500]: /complete/ - Uncaught TypeError: Argument 1 passed to App\Controllers\TaskController::update() must be of the type integer, string given, called in /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php on line 80 and defined in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php:62
+Stack trace:
+#0 /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php(80): App\Controllers\TaskController->update('complete')
+#1 /home/eric/code/php/custom-php-framework-todo-app/public/index.php(24): App\Routing\Router->direct('complete', 'POST', 'complete')
+#2 {main}
+  thrown in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php on line 62
+[Wed Sep 25 09:59:30 2019] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Controllers\TaskController::delete() must be of the type integer, string given, called in /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php on line 80 and defined in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php:50
+Stack trace:
+#0 /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php(80): App\Controllers\TaskController->delete('delete')
+#1 /home/eric/code/php/custom-php-framework-todo-app/public/index.php(24): App\Routing\Router->direct('delete', 'POST', 'delete')
+#2 {main}
+  thrown in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php on line 50
+[Wed Sep 25 09:59:30 2019] ::1:40760 [500]: /delete/ - Uncaught TypeError: Argument 1 passed to App\Controllers\TaskController::delete() must be of the type integer, string given, called in /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php on line 80 and defined in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php:50
+Stack trace:
+#0 /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php(80): App\Controllers\TaskController->delete('delete')
+#1 /home/eric/code/php/custom-php-framework-todo-app/public/index.php(24): App\Routing\Router->direct('delete', 'POST', 'delete')
+#2 {main}
+  thrown in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php on line 50
+[Wed Sep 25 10:00:00 2019] ::1:41138 [200]: /
+[Wed Sep 25 10:00:00 2019] ::1:41142 [302]: /new
+[Wed Sep 25 10:00:00 2019] ::1:41146 [200]: /
+[Wed Sep 25 10:00:00 2019] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Controllers\TaskController::update() must be of the type integer, string given, called in /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php on line 80 and defined in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php:62
+Stack trace:
+#0 /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php(80): App\Controllers\TaskController->update('complete')
+#1 /home/eric/code/php/custom-php-framework-todo-app/public/index.php(24): App\Routing\Router->direct('complete', 'POST', 'complete')
+#2 {main}
+  thrown in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php on line 62
+[Wed Sep 25 10:00:00 2019] ::1:41150 [500]: /complete/ - Uncaught TypeError: Argument 1 passed to App\Controllers\TaskController::update() must be of the type integer, string given, called in /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php on line 80 and defined in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php:62
+Stack trace:
+#0 /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php(80): App\Controllers\TaskController->update('complete')
+#1 /home/eric/code/php/custom-php-framework-todo-app/public/index.php(24): App\Routing\Router->direct('complete', 'POST', 'complete')
+#2 {main}
+  thrown in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php on line 62
+[Wed Sep 25 10:00:00 2019] PHP Fatal error:  Uncaught TypeError: Argument 1 passed to App\Controllers\TaskController::delete() must be of the type integer, string given, called in /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php on line 80 and defined in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php:50
+Stack trace:
+#0 /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php(80): App\Controllers\TaskController->delete('delete')
+#1 /home/eric/code/php/custom-php-framework-todo-app/public/index.php(24): App\Routing\Router->direct('delete', 'POST', 'delete')
+#2 {main}
+  thrown in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php on line 50
+[Wed Sep 25 10:00:00 2019] ::1:41152 [500]: /delete/ - Uncaught TypeError: Argument 1 passed to App\Controllers\TaskController::delete() must be of the type integer, string given, called in /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php on line 80 and defined in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php:50
+Stack trace:
+#0 /home/eric/code/php/custom-php-framework-todo-app/app/routing/Router.php(80): App\Controllers\TaskController->delete('delete')
+#1 /home/eric/code/php/custom-php-framework-todo-app/public/index.php(24): App\Routing\Router->direct('delete', 'POST', 'delete')
+#2 {main}
+  thrown in /home/eric/code/php/custom-php-framework-todo-app/app/controllers/TaskController.php on line 50

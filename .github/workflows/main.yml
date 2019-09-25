@@ -17,10 +17,5 @@ jobs:
       run: php -r "copy('.env.ci', '.env');"
     - name: Setup Database
       run: echo .read migrations/sqlite/create_tasks_table_20190924072400.sql | sqlite3
-    - name: Run PHP Server In Background
-      run: nohup php -S localhost:8080 -t public > phpd.log 2>&1 &
     - name: Run tests
-      run: |
-        cat phpd.log
-        vendor/bin/phpunit tests
-        cat phpd.log
+      run: vendor/bin/phpunit tests --bootstrap=vendor/autoload.php
