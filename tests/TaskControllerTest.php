@@ -18,6 +18,9 @@ class TaskControllerTest extends TestCase
         usleep(100000); //wait for server to get going
 
         (new Dotenv('.', '.env.ci'))->load();
+
+        $create_tables = new Process('echo .read migrations/sqlite/create_tasks_table_20190924072400.sql | sqlite3');
+        $create_tables->start();
     }
 
     public static function tearDownAfterClass()
