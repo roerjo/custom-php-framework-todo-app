@@ -7,18 +7,23 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:5.7.27
+        env:
+          MYSQL_DATABASE: todos
+          MYSQL_ROOT_PASSWORD: rootpassword
+        ports:
+        - 3333
+        volumes:
+        - $HOME/mysql:/var/lib/mysql
+
     steps:
     - uses: actions/checkout@v1
     - name: Install Dependencies
       run: composer install -q --no-ansi --no-scripts --no-suggest --no-progress --prefer-dist
     - name: Setup Environment
       run: php -r "copy('.env.ci', '.env');"
-    - uses: mirromutth/mysql-action@v1.1
-      with:
-        host port: 3333
-        mysql version: '5.7'
-        mysql database: 'todos'
-        mysql root password: rootpassword
     - name: Run tests
       run: vendor/bin/phpunit tests --bootstrap=vendor/autoload.php
     - name: Upload Server Report
