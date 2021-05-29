@@ -3,3 +3,5 @@
 *.swp
 
 .env
+
+.php-cs-fixer.cache
