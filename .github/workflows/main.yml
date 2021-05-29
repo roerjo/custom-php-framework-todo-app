@@ -10,6 +10,14 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.4
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, gd
+          coverage: none
+          tools: composer:v1
+
       - name: Install Dependencies
         run: composer install
 
