@@ -2,14 +2,10 @@
 
 namespace App\Routing;
 
-/**
- * Class: Router
- *
- */
 class Router
 {
     /**
-     * routes
+     * Routes will get loaded into hear from routes.php
      *
      * @var array
      */

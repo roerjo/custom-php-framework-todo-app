@@ -4,14 +4,10 @@ namespace App\Database;
 
 use PDO;
 
-/**
- * Class: Connection
- *
- */
 class Connection
 {
     /**
-     * Creates a new PDO connection
+     * Creates a new PDO connection.
      *
      * @return PDO
      */
@@ -20,9 +16,11 @@ class Connection
         switch ($_ENV['DATABASE_DRIVER']) {
             case 'mysql':
                 $dsn = 'mysql:host='.$_ENV['DATABASE_HOST'].';dbname='.$_ENV['DATABASE_DATABASE'];
+                $options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
                 break;
             case 'sqlite':
-                $dsn = 'sqlite:'.$_ENV['DATABASE_DATABASE'];
+                $dsn = 'sqlite:'.$_ENV['DATABASE_HOST'];
+                $options = [PDO::ATTR_PERSISTENT => true];
                 break;
         }
 
@@ -30,7 +28,7 @@ class Connection
             $dsn,
             $_ENV['DATABASE_USER'] ?? null,
             $_ENV['DATABASE_PASSWORD'] ?? null,
-            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+            $options
         );
     }
 }

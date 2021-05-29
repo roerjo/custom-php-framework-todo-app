@@ -4,10 +4,6 @@ namespace App\Controllers;
 
 use App\Models\Task;
 
-/**
- * Class: TaskController
- *
- */
 class TaskController
 {
     /**

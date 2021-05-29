@@ -4,31 +4,40 @@ namespace App\Database;
 
 use PDO;
 
-/**
- * Class: QueryBuilder
- *
- */
 class QueryBuilder
 {
     /**
-     * Holds the PDO instance
+     * Database connection.
      *
      * @var PDO
      */
-    private $pdo;
+    private PDO $pdo;
 
     /**
-     * __construct
-     *
+     * Setup QueryBuilder.
      */
     public function __construct()
     {
         $this->pdo = Connection::make();
     }
 
-    public function migrate()
+    /**
+     * Run migration to create tasks table.
+     *
+     * @return void
+     */
+    public function migrate(): void
     {
-        $create_tasks_table = file_get_contents(__DIR__.'/../../migrations/create_tasks_table_20190924072400.sql');
+        switch ($_ENV['DATABASE_DRIVER']) {
+            case 'mysql':
+                $path = 'create_tasks_table_20190924072400.sql';
+                break;
+            case 'sqlite':
+                $path = 'sqlite/create_tasks_table_20190924072400.sql';
+                break;
+        }
+
+        $create_tasks_table = file_get_contents(__DIR__.'/../../migrations/'.$path);
 
         try {
             $statement = $this->pdo->prepare($create_tasks_table);
@@ -39,10 +48,9 @@ class QueryBuilder
     }
 
     /**
-     * Return all rows from the passed table
+     * Return all rows from the passed table.
      *
-     * @param string $table
-     *
+     * @param  string  $table
      * @return array
      */
     public function all(string $table): array
@@ -59,10 +67,11 @@ class QueryBuilder
     }
 
     /**
-     * Insert a new row with the passed values into the passed table
+     * Insert a new row with the passed values into the passed table.
      *
-     * @param string $table
-     * @param array $values
+     * @param  string  $table
+     * @param  array  $values
+     * @return void
      */
     public function insert(string $table, array $values)
     {
@@ -83,12 +92,13 @@ class QueryBuilder
     }
 
     /**
-     * Delete the row with the passed id in the passed table
+     * Delete the row with the passed id in the passed table.
      *
-     * @param string $table
-     * @param int $id
+     * @param  string  $table
+     * @param  int  $id
+     * @return void
      */
-    public function delete(string $table, int $id)
+    public function delete(string $table, int $id): void
     {
         try {
             $statement = $this->pdo->prepare(
@@ -103,13 +113,14 @@ class QueryBuilder
 
     /**
      * Update the row with that holds the passed id with the passed
-     * values in the passed table
+     * values in the passed table.
      *
-     * @param string $table
-     * @param array $values
-     * @param int $id
+     * @param  string  $table
+     * @param  array  $values
+     * @param  int  $id
+     * @return void
      */
-    public function update(string $table, array $values, int $id)
+    public function update(string $table, array $values, int $id): void
     {
         try {
             $sql = sprintf(
