@@ -3,6 +3,23 @@ name: Push Flow
 on: push
 
 jobs:
+  format:
+    name: Format Code
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Install Dependencies
+        run: composer install -n --no-ansi --no-interaction --no-scripts --no-suggest --no-progress
+
+      - name: Run php-cs-fixer
+        run: ./vendor/bin/php-cs-fixer fix
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply php-cs-fixer changes
+
   test:
     name: Run Tests
     runs-on: ubuntu-latest
