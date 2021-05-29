@@ -19,13 +19,14 @@ jobs:
           tools: composer:v1
 
       - name: Install Dependencies
-        run: composer install
+        run: composer install -n --no-ansi --no-interaction --no-scripts --no-suggest --no-progress
 
       - name: Run tests
         run: vendor/bin/phpunit
 
       - name: Upload Server Report
         uses: actions/upload-artifact@v1
+        if: failure()
         with:
-          name: server-report
-          path: phpd.log
+          name: test-run-report
+          path: ./storage/logs
