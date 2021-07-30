@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: roerjo/php-toto-app
+    image: roerjo/php-todo-app
     container_name: php-todo-app
     working_dir: /var/www/app
     links:
@@ -43,6 +43,8 @@ services:
     environment:
       - "MYSQL_DATABASE=${DATABASE_DATABASE}"
       - "MYSQL_ROOT_PASSWORD=${DATABASE_PASSWORD}"
+    ports:
+      - "${EXTERNAL_DB_PORT}:3306"
 
 volumes:
   php_todo_database:
