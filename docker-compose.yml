@@ -25,7 +25,7 @@ services:
     volumes_from:
       - app
     volumes:
-      - ./vhost.conf:/etc/nginx/conf.d
+      - ./vhost.conf:/etc/nginx/conf.d/nginx.conf
     links:
       - app
     environment:
