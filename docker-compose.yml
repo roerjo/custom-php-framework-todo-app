@@ -49,3 +49,8 @@ services:
 volumes:
   php_todo_database:
   php_todo_phpsocket:
+
+networks:
+  default:
+    external:
+      name: nginx-proxy
