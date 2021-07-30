@@ -6,7 +6,7 @@ This is a custom PHP MVC framework I'm working on. CRUD functions are currently 
 - MySQL
 - Composer
 
-## Installion
+## Installation
 
 - Setup the .env file:
   - APP_DEBUG // boolean
