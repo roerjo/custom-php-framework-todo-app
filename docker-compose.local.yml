@@ -20,8 +20,8 @@ services:
   nginx:
     image: nginx:alpine
     container_name: php-todo-nginx
-    expose:
-      - "80"
+    ports:
+      - "${APP_PORT}:80"
     volumes_from:
       - app
     volumes:
@@ -29,10 +29,6 @@ services:
       - ./vhost.conf:/etc/nginx/conf.d/default.conf
     links:
       - app
-    environment:
-      - "VIRTUAL_HOST=${APP_HOST}"
-      - "LETSENCRYPT_HOST=${APP_HOST}"
-      - "LETSENCRYPT_EMAIL=${APP_EMAIL}"
 
   # The Local Database
   database:
