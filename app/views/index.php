@@ -7,9 +7,9 @@
 
     <title>Task Manager</title>
 
-    <link href="img/favicon.ico" rel="icon">
+    <link href="../../public/img/favicon.ico" rel="icon">
 
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../../public/css/main.css">
 
 </head>
 
