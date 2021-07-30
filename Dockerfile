@@ -16,13 +16,9 @@ RUN apt-get update \
         pdo_mysql \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-COPY ./composer.json composer.json
-COPY ./composer.lock composer.lock
-
-RUN composer install --no-scripts --no-autoloader
-
 COPY ./ ./
 
-RUN composer dump-autoload --optimize
+RUN composer install --no-scripts --no-autoloader \
+    && composer dump-autoload --optimize
 
 CMD php-fpm
