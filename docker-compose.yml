@@ -12,7 +12,6 @@ services:
     links:
       - database
     volumes:
-      - .:/var/www/app
       - ./php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-php-fpm.conf
       - php_todo_phpsocket:/var/run
 
