@@ -13,8 +13,6 @@ services:
       - 9000
     links:
       - database
-    volumes:
-      - ./php-fpm.conf:/usr/local/etc/php-fpm.d/zzz-php-fpm.conf
 
   # The Web Server
   nginx:
@@ -22,10 +20,9 @@ services:
     container_name: php-todo-nginx
     expose:
       - 80
-    volumes_from:
-      - app
     volumes:
-      - ./vhost.conf:/etc/nginx/conf.d/nginx.conf
+      - ./vhost.conf:/etc/nginx/conf.d/default.conf
+      - .:/var/www/app
     links:
       - app
     environment:
@@ -47,7 +44,6 @@ services:
 
 volumes:
   php_todo_database:
-  php_todo_phpsocket:
 
 networks:
   default:
