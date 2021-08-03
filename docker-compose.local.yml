@@ -6,7 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: roerjo/php-toto-app
+    image: roerjo/php-todo-app
     container_name: php-todo-app
     working_dir: /var/www/app
     links:
